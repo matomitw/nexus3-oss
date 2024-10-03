@@ -218,6 +218,11 @@
     owner: "{{ nexus_os_user }}"
     group: "{{ nexus_os_group }}"
     mode: "0750"
+  
+- name: Ensure nexus.vmoptions file exists
+  ansible.builtin.file:
+    path: "{{ nexus_installation_dir }}/nexus-latest/bin/nexus.vmoptions"
+    state: touch  # This will create the file if it does not exist
 
 - name: Setup Nexus data directory
   ansible.builtin.lineinfile:
