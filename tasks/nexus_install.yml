@@ -370,6 +370,7 @@
     dest: "{{ nexus_os_user_home_dir }}/.bashrc"
     regexp: ^export NEXUS_HOME=.*
     line: export NEXUS_HOME={{ nexus_installation_dir }}/nexus-latest
+    create: yes
   notify:
     - nexus-service-stop
 
@@ -378,6 +379,7 @@
     dest: "{{ nexus_installation_dir }}/nexus-latest/bin/nexus.rc"
     regexp: .*run_as_user=.*
     line: run_as_user="{{ nexus_os_user }}"
+    create: yes
   notify:
     - nexus-service-stop
 
@@ -386,6 +388,7 @@
     dest: "{{ nexus_default_settings_file }}"
     regexp: ^application-port=.*
     line: application-port={{ nexus_default_port }}
+    create: yes
   notify:
     - nexus-service-stop
 
@@ -394,6 +397,7 @@
     dest: "{{ nexus_default_settings_file }}"
     regexp: ^nexus-context-path=.*
     line: nexus-context-path={{ nexus_default_context_path }}
+    create: yes
   notify:
     - nexus-service-stop
 
@@ -402,6 +406,7 @@
     dest: "{{ nexus_default_settings_file }}"
     regexp: ^application-host=.*
     line: application-host={{ nexus_application_host }}
+    create: yes
   notify:
     - nexus-service-stop
 
@@ -413,6 +418,7 @@
     dest: "{{ nexus_default_settings_file }}"
     regexp: ^nexus.scripts.allowCreation=.*
     line: nexus.scripts.allowCreation=true
+    create: yes
   notify:
     - nexus-service-stop
   when: nexus_version is version_compare('3.21.2', '>=')
