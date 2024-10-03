@@ -236,13 +236,14 @@
     create: yes  # This will create the file if it doesn't exist
   notify:
     - nexus-service-stop
-    
+
 
 - name: Setup JVM logfile directory
   ansible.builtin.lineinfile:
     dest: "{{ nexus_installation_dir }}/nexus-latest/bin/nexus.vmoptions"
     regexp: ^-XX:LogFile=.*
     line: -XX:LogFile={{ nexus_data_dir }}log/jvm.log
+    create: yes
   notify:
     - nexus-service-stop
 
