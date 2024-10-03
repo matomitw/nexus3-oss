@@ -136,6 +136,7 @@
     group: "{{ nexus_os_group }}"
     state: link
     follow: false
+    force: yes 
   register: nexus_latest_version
   notify:
     - nexus-service-stop
