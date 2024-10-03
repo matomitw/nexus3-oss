@@ -361,6 +361,7 @@
     dest: "{{ nexus_installation_dir }}/nexus-latest/bin/nexus.vmoptions"
     regexp: ^-Djava.io.tmpdir=.*
     line: -Djava.io.tmpdir={{ nexus_tmp_dir }}
+    create: yes
   notify:
     - nexus-service-stop
 
