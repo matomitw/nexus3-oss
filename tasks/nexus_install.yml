@@ -261,6 +261,7 @@
     dest: "{{ nexus_installation_dir }}/nexus-latest/bin/nexus.vmoptions"
     regexp: ^-Duser.timezone=.*
     line: -Duser.timezone={{ nexus_timezone }}
+    create: yes
   notify:
     - nexus-service-stop
 
