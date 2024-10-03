@@ -252,6 +252,7 @@
     dest: "{{ nexus_installation_dir }}/nexus-latest/bin/nexus.vmoptions"
     regexp: ^-Dkaraf.log=.*
     line: -Dkaraf.log={{ nexus_data_dir }}/log
+    create: yes
   notify:
     - nexus-service-stop
 
